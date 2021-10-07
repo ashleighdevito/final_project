@@ -1,0 +1,5 @@
+Movies
+
+In this project we create an application to predict the box office success of a film. 
+We will gather data on historical movie releases to create an algorithm and predict a range of box office earnings for future debuts.
+We aim to look at data gathered regarding releases over the past 15 years (2006-present).

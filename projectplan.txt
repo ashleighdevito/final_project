@@ -1,0 +1,15 @@
+Project Plan
+
+Final executive summary
+Create Project Plan
+Decide on data
+Gather Data
+Split to train and test
+Test models
+-Linear
+-Random Forest
+-Neural Network
+
+Decide on visualizations
+
+Correlation matrix 
