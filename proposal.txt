@@ -1,5 +1,22 @@
 Movies
 
-In this project we create an application to predict the box office success of a film. 
+Big-budget movies carry a large financial risk.  In order to help make decisions on release strategy, we will create an application to predict the box office success of a film. 
 We will gather data on historical movie releases to create an algorithm and predict a range of box office earnings for future debuts.
 We aim to look at data gathered regarding releases over the past 15 years (2006-present).
+
+Data will be stored in an AWS database.
+
+A machine learning model will look at this historial data and then be applied to several upcoming new releases. 
+
+A webpage encompassing the project will contain:
+-a report page describing the project process, including results from several models (linear regression, random forest classifier, neural network)
+-the predictor page to display estimated range of Box Office Revenue. The new release data will be scraped and stored in an API.
+-statistics page outlining which features are weighted the most heavily to the model results
+
+
+The project group consists of:
+Terrell Bradford
+Michael Cipriani
+Ashleigh DeVito
+Laura Kemp
+Sam Pierce
