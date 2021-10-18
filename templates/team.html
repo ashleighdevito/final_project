@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Project Team</title>
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+
+  <!-- Leaflet JavaScript code -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+</head>
+
+<body>
+      <!-- navbar -->
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid bar">
+          <a class="navbar-brand main-button" href="index">New York Car Accidents</a>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item ms-auto">
+              <a href="team" class="nav-link" style="color: rgba(124, 132, 136, 0.925)">Our Team</a>
+            </li>
+            <li class="nav-item ms-auto">
+              <a target="_blank" href="https://sdinespierce.github.io/etl_project/" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">ETL Project</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  <!-- side nav -->
+  <main>
+
+    <!-- main page -->
+    <div class="container-fluid">
+      <div class='row py-3'>
+        <div class="card m-2 p-3" style="max-width: 540px;">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="../static/images/bio_Bradford.jpg" class="card-img" alt="Terrell Bradford">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Terrell Bradford</h5>
+                <p class="card-text">Electrical Engineering expert. Panda Master.</p>
+                <a target="_blank" class="contact" href="https://github.com/terrellbradford">GitHub</a>
+                <a target="_blank" class="contact" href="https://www.linkedin.com/in/terrell-bradford-22062661/">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-2 py-3" style="max-width: 540px;">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="../static/images/bio_Cipriani.png" class="card-img" alt="Michael Cipriani">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Michael Cipriani</h5>
+                <p class="card-text">Fan of mountain biking, and data-driven decisions.</p>
+                <a target="_blank" class="contact" href="https://github.com/mikecip10">GitHub</a>
+                <a target="_blank" class="contact" href="https://www.linkedin.com/in/michael-cipriani/">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card m-2 py-3" style="max-width: 540px;">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="../static/images/bio_DeVito.jpg" class="card-img mb-3" alt="Ashleigh DeVito">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Ashleigh DeVito</h5>
+                <p class="card-text">Python ninja. House Slytherin.</p>
+                <a target="_blank" class="contact" href="https://github.com/ashleighdevito">Github</a>
+                <a target="_blank" class="contact" href="https://www.linkedin.com/in/ashleighdevito/">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card m-2 py-3" style="max-width: 540px;">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="../static/images/bio_Kemp.png" class="card-img" alt="Laura Kemp">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Laura Kemp</h5>
+                <p class="card-text">Mac Champion and Time-management queen.</p>
+                <a target="_blank" class="contact" href="https://github.com/lakemp2345">Github</a>
+                <a target="_blank" class="contact" href="https://www.linkedin.com/in/laura-kemp-632908158/">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card m-2 py-3" style="max-width: 540px;">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="../static/images/bio_Pierce.jpg" class="card-img" alt="Sam Pierce">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Sam Pierce</h5>
+                <p class="card-text">Authority of all things pun. Debugging virtuoso.</p>
+                <a target="_blank" class="contact" href="https://github.com/sdinespierce">Github</a>
+                <a target="_blank" class="contact" href="https://www.linkedin.com/in/sam-pierce/">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card m-2 py-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="../static/images/bio_Seeber.png" class="card-img" alt="Tom Seeber">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Tom Seeber - Instructor</h5>
+                <p class="card-text">Answerer of questions. Hat aficionado.</p>
+                <a target="_blank" class="contact" href="https://github.com/tomseeber">Github</a>
+                <a target="_blank" class="contact" href="https://www.linkedin.com/in/thomasseeber/">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main> 
+  <!-- JavaScript file -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
