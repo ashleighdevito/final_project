@@ -7,8 +7,8 @@ CREATE TABLE "Movie" (
     "runtime" INTEGER   NOT NULL,
     "metascore" INTEGER   NOT NULL,
     "imdb_rating" FLOAT   NOT NULL,
-    "domestic_boxoffice" INTEGER   NOT NULL,
     "budget" INTEGER   NOT NULL,
+    "boxoffice" INTEGER   NOT NULL,
     "buzz" INTEGER   NOT NULL,
     CONSTRAINT "pk_Movie" PRIMARY KEY (
         "movie_id"
