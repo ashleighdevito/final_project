@@ -4,6 +4,7 @@ config.py
 # Byte-compiled / optimized / DLL files
 
 db_config_.py
+db_config.py
 config.py
 
 __pycache__/
