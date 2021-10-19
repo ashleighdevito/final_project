@@ -45,8 +45,11 @@
       <!-- navbar -->
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid bar">
-          <a class="navbar-brand main-button" href="index">New York Car Accidents</a>
+          <a class="navbar-brand main-button" href="index">Predicting Movie Revenue</a>
           <ul class="navbar-nav ms-auto">
+            <li class="nav-item ms-auto">
+              <a href="process" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">Process</a>
+            </li>
             <li class="nav-item ms-auto">
               <a href="team" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">Our Team</a>
             </li>
@@ -56,156 +59,7 @@
           </ul>
         </div>
       </nav>
-  <!-- side nav -->
-  <div class="sidenav">
-    <div class="row">
-      <button data-toggle="collapse" data-target="#year-filter" class="filter-button">Year Filter >></button>
-    </div>
-    <div class="row">
-      <div id="year-filter" class="collapse">
-        <div class="row">
-          <label class='checkbox-label'>2016
-            <input type="checkbox" id='check-2016' name="year-input" checked="checked">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>2017
-            <input type="checkbox" id='check-2017' name="year-input" checked="checked">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>2018
-            <input type="checkbox" id='check-2018' name="year-input" checked="checked">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>2019
-            <input type="checkbox" id='check-2019' name="year-input" checked="checked">
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <button data-toggle="collapse" data-target="#map-selector" class="filter-button">Map Selector >></button>
-    </div>
-    <div class="row">    
-      <div id="map-selector" class="collapse">
-        <label class='radio-label'>
-          <input type="radio" name="map-type" value="Heatmap" class="map-type" checked="checked">
-          Heatmap
-        </label>
-        <label class='radio-label'>
-          <input type="radio" name="map-type" value="Infrastructure" class="map-type">
-          Infrastructure
-        </label>
-        <label class='radio-label'>
-          <input type="radio" name="map-type" value="Weather" class="map-type">
-          Weather
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <button data-toggle="collapse" data-target="#weather-filter" class="weather-selectors filter-button" hidden="true">Weather Filter >></button>
-    </div>
-    <div class="row">
-      <div id="weather-filter" class="collapse weather-selectors">
-        <div class="row">
-          <label class='checkbox-label'>Temperature
-            <input type="checkbox" id='check-temp' name="weather-input" checked="checked" class="weather-selectors">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>Visibility (Miles)
-            <input type="checkbox" id='check-vis' name="weather-input">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>Wind Direction
-            <input type="checkbox" id='check-windDir' name="weather-input">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>Wind Speed
-            <input type="checkbox" id='check-windSpeed' name="weather-input">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>Precipitation (Inches)
-            <input type="checkbox" id='check-precip' name="weather-input">
-          </label>
-        </div>
-        <div class="row">
-          <label class='checkbox-label'>Weather Condition
-            <input type="checkbox" id='check-condition' name="weather-input">
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <button data-toggle="collapse" data-target="#infrastructure-filter" class="inf-selectors filter-button" hidden="true">Infrustructure Filter >></button>
-    </div>
-    <div class="row">
-      <div id="infrastructure-filter" class="collapse inf-selectors">
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Bump" checked="checked">
-            Speed Bump
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Crossing">
-            Street Crossing
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Give_Way">
-            Give Way
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Junction">
-            Junction
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Railway">
-            Railway
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Roundabout">
-            Roundabout
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Stop">
-            Stop
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Traffic_Calming">
-            Traffic Calming
-          </label>
-        </div>
-        <div class="row">
-          <label class='radio-label'>
-            <input type="radio" name="infrastructure-input" value="Traffic_Signal">
-            Traffic Signal
-          </label>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <main>
-
     <!-- main page -->
     <div class="container-fluid">
       <div class='row quick-stats'>
