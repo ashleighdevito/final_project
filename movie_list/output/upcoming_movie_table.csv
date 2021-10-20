@@ -1,0 +1,9 @@
+movie_id,title,movie_rating,release_date,runtime,metascore,imdb_rating,budget,boxoffice,buzz
+1,Dune,PG-13,2021-10-22,155,75.0,8.4,21000000,0,4
+3,Ron's Gone Wrong,PG,2021-10-22,106,68.0,6.3,21000000,0,4
+8,The Souvenir: Part II,R,2021-10-29,106,98.0,8.0,21000000,0,4
+12,Spencer,R,2021-11-05,111,85.0,6.4,21000000,0,4
+24,Mothering Sunday,R,2021-11-19,110,69.0,6.2,21000000,0,4
+30,The Humans,R,2021-11-24,108,78.0,7.3,21000000,0,4
+33,Red Rocket,R,2021-12-03,128,78.0,7.0,21000000,0,4
+39,Swan Song,R,2021-08-13,105,66.0,7.0,21000000,0,4
