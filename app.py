@@ -9,6 +9,7 @@ import decimal
 from sqlalchemy import create_engine, inspect, func
 from importlib import reload
 import pickle 
+import boto3
 import numpy as np
 
 #Added to handle handle json not serializable error decimal return not acceptedable for jsonify
@@ -52,20 +53,12 @@ def team():
 
 
 # Set route
-@app.route("/api", methods=['POST'])
+@app.route("/predict", methods = ["POST"])
 def predict():
-    #
-    data = request.get_json(force=True)
-
-    #
-    prediction = model.predict([[np.array(data['exp'])]])
-
-    #
-    output = prediction[0]
-
-
-    # Return data
-    return jsonify(output)
+    float_features = [float(x) for x in request.form.values()]
+    features = [np.array(float_features)]
+    prediction = model.predict(features)
+    return render_template("index.html", prediction_text = "boxoffice prediction {}".format(prediction))
 
 if __name__ == '__main__':
     app.jinja_env.cache = {}
