@@ -4,11 +4,11 @@ body {
     margin: 0;
   }
   
-  /* Set map, body, and html to 100% of the screen size. */
   body,
   html {
     height: 100%;
   }
+
   body {
     height: 750px;
     background-position: center;
@@ -17,7 +17,6 @@ body {
     background-color: whitesmoke;
 }
 
-/* from ELT Project */
 h1{
     color:#212529;
     text-align:center;
@@ -28,20 +27,10 @@ h2{
     color:#212529;
     text-align: left;
 }
-
 h3{
-  color:whitesmoke;
-  text-align: center;
-  font-weight: bold;
-}
-
-h4{
-  font-size: smaller;
-  color:whitesmoke;
-}
-h5{
-  text-decoration: none;
   color:#212529;
+  text-align: left;
+  font-size: 18px !important;
 }
 
 .btn{
@@ -61,6 +50,10 @@ h5{
   text-decoration: none;
   padding-right: 75px;
   font-weight: 500;
+}
+
+a.contact:hover{
+  color:#212529;
 }
 
 .card{
@@ -84,6 +77,7 @@ h5{
   margin-top:10px;
   margin-bottom: -5px;
 }
+
 @media(max-width: 991px) {
   .contact {
     margin: 0px;
