@@ -30,14 +30,14 @@ app = Flask(__name__)
 def home():
 
     # Return template and data
-    return render_template("index.html", prediction_text = "Run the model to see a prediction.")
+    return render_template("index.html", prediction_text = "Run the model to see a box office prediction.")
 
 
 @app.route("/index")
 def index():
 
     # Return template and data
-    return render_template("index.html")
+    return render_template("index.html", prediction_text = "Run the model to see a box office prediction.")
 # Set route
 @app.route("/team")
 def team():
@@ -96,6 +96,12 @@ def predict_rocket():
     
     prediction = model.predict(rocket)
     return render_template("index.html", prediction_text = "Red Rocket has a boxoffice prediction of {}".format(prediction))
+
+@app.route("/predict-song")
+def predict_song():
+    
+    prediction = model.predict(song)
+    return render_template("index.html", prediction_text = "Swan Song has a boxoffice prediction of {}".format(prediction))
 
 if __name__ == '__main__':
     app.jinja_env.cache = {}
