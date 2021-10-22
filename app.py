@@ -15,7 +15,7 @@ import numpy as np
 # model = load_model('model.h5')
 
 
-model = pickle.load(open("new_xg_model.pkl", "rb"))
+model = pickle.load(open("rf_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
