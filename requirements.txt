@@ -65,9 +65,7 @@ webdriver-manager==3.4.2
 webencodings==0.5.1
 Werkzeug==2.0.1
 widgetsnbextension==3.5.1
-cloudpickle @ file:///tmp/build/80754af9/cloudpickle_1598884132938/work
 wincertstore==0.2
 zope.interface==5.4.0
 scikit-image==0.17.2
 pickleshare==0.7.5
-scikit-learn @ file:///C:/ci/scikit-learn_1598377018496/work
