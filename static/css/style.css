@@ -67,18 +67,22 @@ h5{
   margin-bottom: 20px;
 }
 
-.card-text{
-  padding-bottom: 10px;
+.card-img-top{
+  padding-top: 10px;
+  max-height: 450px;
+  max-width: fit-content;
+  text-align: center;  
 }
 
 #frame{
-  margin-bottom: 175px;
-  margin-top:20px;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 #results{
   border-color: transparent;
-  margin-top:20px;
+  margin-top:10px;
+  margin-bottom: -5px;
 }
 @media(max-width: 991px) {
   .contact {
