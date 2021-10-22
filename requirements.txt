@@ -67,3 +67,4 @@ Werkzeug==2.0.1
 widgetsnbextension==3.5.1
 wincertstore==0.2
 zope.interface==5.4.0
+pickleshare==0.7.5

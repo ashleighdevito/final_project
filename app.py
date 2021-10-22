@@ -7,34 +7,26 @@ import sqlalchemy
 from flask import Flask, json, request, jsonify, render_template, redirect
 import decimal
 from sqlalchemy import create_engine, inspect, func
-# from config import Password, Username,Host,DB,Password_2, Username_2,Host_2,DB2
 from importlib import reload
 import pickle 
+#from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song
 import numpy as np
 
-#Added to handle handle json not serializable error decimal return not acceptedable for jsonify
-#Class creation credit to https://feryll.github.io/python/json/python-how-to-handle-json-not-serializable-error/
-class MyJSONEncoder(json.JSONEncoder):
+dune = [[155,75.0,8.4,21000000,4,1,0,0.0,0,1,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,0.0,0.0,0,1,0,0.0,0.0,0.0,0.0]]
+ron = [[106,68.0,6.3,21000000,4,1,1,0.0,1,0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,0.0,0.0,1,0,0,0.0,0.0,0.0,0.0]]
+souvenir = [[106,98.0,8.0,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
+spencer = [[111,85.0,6.4,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,1,1,0.0,0.0,0.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
+mothering_sunday = [[110,69.0,6.2,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
+humans = [[108,78.0,7.3,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
+rocket =[[128,78.0,7.0,21000000,4,0,1,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,12,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
+song = [[105,66.0,7.0,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,8,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
 
-    def default(self, obj):
-        if isinstance(obj, decimal.Decimal):
-            # Convert decimal instances to strings.
-            return str(obj)
-        return super(MyJSONEncoder, self).default(obj)
-
+model = pickle.load(open("rf_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
-app.json_encoder = MyJSONEncoder
 
-#Make connection to Database
-# engine = create_engine(f'postgresql://{Username}:{Password}@{Host}:5432/{DB}', echo=False)
-# connection = engine.connect()
 
-# upcoming_engine = create_engine(f'postgresql://{Username_2}:{Password_2}@{Host_2}:5432/{DB2}', echo=False)
-# upcoming_connection = upcoming_engine.connect()
-
-model = pickle.load(open("file_name", "rb"))
 
 @app.route("/")
 def home():
@@ -60,20 +52,51 @@ def team():
 
 
 # Set route
-@app.route("/api", methods=['POST'])
-def predict():
-    #
-    data = request.get_json(force=True)
+@app.route("/predict-dune")
+def predict_dune():
+    #float_features = [float(x) for x in request.form.values()]
+    # float_features = [128,53,5.6,400000,6,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,1,0,0,0,0,0,0]
+    # features = [np.array(float_features)]
+    
+    prediction = model.predict(dune)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
 
-    #
-    prediction = model.predict([[np.array(data['exp'])]])
+@app.route("/predict-ron")
+def predict_ron():
+    
+    
+    prediction = model.predict(ron)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
 
-    #
-    output = prediction[0]
+@app.route("/predict-souvenir")
+def predict_souvenir():
+    
+    prediction = model.predict(souvenir)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
 
+@app.route("/predict-spencer")
+def predict_spencer():
+    
+    prediction = model.predict(spencer)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
 
-    # Return data
-    return jsonify(output)
+@app.route("/predict-mothering_sunday")
+def predict_mothering():
+    
+    prediction = model.predict(mothering_sunday)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
+
+@app.route("/predict-humans")
+def predict_humans():
+    
+    prediction = model.predict(humans)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
+
+@app.route("/predict-rocket")
+def predict_rocket():
+    
+    prediction = model.predict(rocket)
+    return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
 
 if __name__ == '__main__':
     app.jinja_env.cache = {}
