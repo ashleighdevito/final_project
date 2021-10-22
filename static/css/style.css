@@ -27,6 +27,11 @@ h2{
     color:#212529;
     text-align: left;
 }
+h3{
+  color:#212529;
+  text-align: left;
+  font-size: 18px !important;
+}
 
 .btn{
   border-color: #212529 !important;

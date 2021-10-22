@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>The Model</title>
+  <title>The Project</title>
 
   <!-- D3 -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -23,7 +23,7 @@
       <a class="navbar-brand main-button" href="/index">Predicting Movie Revenue</a>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item ms-auto">
-          <a href="/model" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">The Model</a>
+          <a href="/model" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">The Project</a>
         </li>
         <li class="nav-item ms-auto">
           <a href="/team" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">Our Team</a>
@@ -40,91 +40,73 @@
       <div class='row'>
         <div class="col-10 offset-1" id="frame">
           <div class='row'>
-            <h1>The Model</h1>
+            <h1>The Project</h1>
           </div>
           <div class="row">
-            <h2>Extracting</h2><br>
+            <h2>Goal</h2><br>
             <p>
-            The original dataset that we decided to explore was the US accident dataset from Kaggle. That file was 1Gb and contained accident data from 2016-2020 from all around the USA. 
-            That was too large to upload to github so we narrowed our scope down to the state of New York.
+            Our goal for this project is to predict the domestic box office gross of upcoming movies based on the last 15 years of movie data.
             </p>
+            <br><h2>Approach</h2><br>
             <p>
-            We wanted to have other information related to counties that could be used to answer specific questions about why accidents are happening in certain places. 
-            This led us to looking at census data for population and wealth statistics for each NY county. We got population data from 2016-2019 from the US Census API, and
-            wealth and race data from datausa.io.
+            We followed a traditional extract, transform, and load process to create a database hosted on Amazon Web services.  The data we collected includes budget, runtime, genres, directors, actors, critical ratings, and more. The full list of included features can be seen in the data dictionary. 
             </p>
             <p>
-            Links to sources are found on the Sources page.
+            The target movie set was determined for predicting the revenue
+            </p>
+            <br><h2>Process</h2><br>
+            <br><h3>Extraction:</h3><br>
+            <p>
+            The majority of historical data was gathered from OMDB.<br>
+            Budget data was gathered from thenumbers.com<br>
+            The data on movies that were to be released was gathered from Imdb.<br>
+            Buzz, our metric for marketing, was gathered through Google Trends analysis of the movie titles.              
+            </p>
+            <br><h3>Transformation:</h3><br>
+            <p>
+            Data was cleaned using Jupyter notebook scripts.<br>
+            Omitted data included: studio, language, plot, tagline, directors, writers, actors. Release date information was converted to Month.<br>
+            Dummy columns were created for genre and movie rating.              
+            </p>
+            <br><h3>Loading:</h3><br>
+            <p>
+            CSVs containing the final cleaned data were imported into the AWS database via Jupyter notebook scripts connecting to PostgreSQL. <br>
+            pgAdmin was our preferred client.              
+            </p>
+            <br><h3>Modeling:</h3><br>
+            <p>
+            Data was called from our database and used to create  an XG boost model.<br>
+            The historical dataset was split into testing and training sets.<br>
+            Once optimized, the model was converted into binary information for export through the Pickle module, allowing it to be accessible to our application.            
+            </p>
+            <br><h3>Presenting:</h3><br>
+            <p>
+            Our model was deployed using a Flask application, built with Python, which applies our model to data gathered from upcoming movies.<br>
+            A website, hosted through Heroku, creates an interface in which a user is able to select a film to view our prediction for that film’s revenue.
+            </p>
+            <br><h2>Product</h2><br>
+            <p>
+            Our application contains pages for prediction, a project analysis, and a team profile, as well as a link to previous projects.
+            </p>
+            <br><h2>Challenges</h2><br>
+            <br><h3>In data collection:</h3><br>
+            <p>
+            A movie’s budget was one of the biggest indicators of box office success and most of that data is behind a significant paywall. The budget data we could find pared our dataset down to 25% of its original size. This also lead to an issue in the availability of budget data for the movies we are trying to predict. We solved this by either using available data, or estimating the budget as a median value of the training data. 
             </p>
             <p>
-            The files from DataUSA and Kaggle were downloaded directly from the site.  The Census data was called from the API and turned into a JSON for manupilation using:
-            <pre>
-              <code>
-                url_2019_county ="https://api.census.gov/data/2019/pep/population?get=NAME,POP,DATE_DESC&for=county:*&in=state:*&key="+api_key
-                response = requests.get(url_2019_county)
-                response_json = response.json()
-              </code>
-            </pre>
-            This was repeated for 2016-2019.
+            Another sticky wicket was trying to quantify the success of marketing campaigns, which no doubt have an impact on box office gross. We decided to create a feature called Buzz that looked at google trend data for the year prior to a movie’s release date. For each week the search term (<movie name> + “movie”) was scored on a scale of 0-100. We counted the weeks that the score was greater than 20 and used that number as our Buzz feature. One issue with this method was that movies coming out far in the future wouldn’t have an accurate score since they haven’t reached their peak search popularity, which is almost always the week of the movie’s release.
             </p>
-            <br><h2>Transforming</h2><br>
+            <br><h3>In data cleaning:</h3><br>
             <p>
-            Cleaning the data had its usual set of challenges that we handled in stride. Splitting and merging datasets, altering data types, and dropping extraneous data.
+            As we moved into the data cleaning portion of the project, the shape of our data began to change. We encountered noisy, inconsistent, and missing data. For these reasons we elected to not include the studio, language, plot, or tagline of the movies. We also decided to drop directors, writers, and actors from the data. While they could be a good indicator of a movie’s financial success, they greatly affected the accuracy of the model. After dropping irrelevant columns, changing the release date to a month column, creating dummy columns for genre and movie rating, and scaling the data, we were ready to test out some models.
+            </p>
+            <br><h3>In modeling:</h3><br>
+            <p>
+            Our neural network model didn’t work with the pickling so we saved it as an h5 file. This proved tricky to work with and we decided to stick to using the random forest and xg boost models. Ultimately, we chose the XG boost model to use in our application.
             </p>
             <p>
-            As mentioned above, we trimmed down the accidents data set to NY state only. This took the size of the file from nearly 3 million lines down to about 120 thousand. 
-            <img src="images\Accident_truncate_img.PNG" alt="Database" style="padding-top: 10px;" class="image-responsive rounded mx-auto d-block" width="25%"><br>
+            Initially, we tried multiple models and target data binning methods to see which ones would yield the best result. Linear regression and SVM models didn’t seem suitable for the dataset that we assembled, so we moved on to random forests, boosted models, and neural networks. These 3 models yielded similar accuracy scores. When grouping the models into 15 bins, all models had an accuracy score in the 30% range. While we liked the specific targets, we deemed the accuracy too low and went about reducing the number and range of the bins. We were able to achieve an accuracy rating of up to 95% by changing the way we binned the target data. After much trial and error we settled on using 4 bins for our target data: 0-20 million, 20-100 million, 100-200 million, and over 200 million USD. This model resulted in an accuracy score of 64% but we feel that it has more meaningful predictions.
             </p>
-            This accidents file was then divided into CSVs to reflect our target tables.
-            <p>  
-            </p>
-            <p>
-            The census data was initially collected in multiple csv files.  First, County IDs were identified and pulled into their own CSV.  The yearly data was then restricted to County ID, Population, and Year then concattenated into a single file. This was done using:
-            <pre>
-              <code>
-                Combined_New_York_City_Census_df = pd.concat([New_York_City_2016_Census_df, New_York_City_2017_Census_df, New_York_City_2018_Census_df,New_York_City_2019_Census_df], axis=0)
-              </code>
-            </pre>
-            </p>
-            <p>
-            The household income data set had columns referencing IDs from a different database. We dropped them using:
-            <pre>
-              <code>
-                df.drop(columns=["ID Race", "ID Year", "ID Geography", "Slug Geography", "Geography"], inplace=True)
-              </code>
-            </pre>
-            This file was then used to create our own Race and Income tables. The original data included points of Total Income for all races, which was removed.
-            </p>
-            <p>
-            Once we cleaned the files, we created dataframes representative of our SQL schema. This entailed merging multiple datasources and slicing others for easier readability.
-            </p>
-            <br><h2>Loading</h2><br>
-            <p>
-            We used AWS to host a SQL relational database that houses our data. 
-            </p>
-            <p>
-            First, the tables were created using a SQL schema mirroring the cleaned CSV files.  Once the tables were created, we used SQLAlchemy to form a connection to the database and imported the data. Our database is secured, so any access will require rights.
-            <pre>
-              <code>
-                engine = create_engine(f"postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/bootcamp")
-                conn = engine.connect()
-              </code>
-              <code>
-                Time_table_data = pd.read_csv('../Data/db_table_csvs/Time.csv', index_col=0)
-                Time_table_data.to_sql('Time', con = conn, if_exists='append', chunksize = 100000, method ='multi')
-              </code>
-            </pre>
-            </p>
-            <p>
-            We repeated this process for each table until all of our data was uploaded.
-            </p>
-            <p>
-            Additional SQL schema queries were then run to add the table constraints for any columns identified as Keys.
-            </p>
-            <p>
-            Completed Database:
-            </p>
-            <img src="images\Database_img.PNG" alt="Database" style="padding-top: 10px;" class="image-responsive rounded mx-auto d-block" width="75%"><br>
           </div>
         </div>
       </div>  
