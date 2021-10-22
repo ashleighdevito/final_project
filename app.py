@@ -11,8 +11,11 @@ from importlib import reload
 import pickle 
 from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song
 import numpy as np
+# from keras.models import load_model
+# model = load_model('model.h5')
 
-model = pickle.load(open("rf_model.pkl", "rb"))
+
+model = pickle.load(open("new_xg_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
