@@ -15,7 +15,7 @@ import numpy as np
 # model = load_model('model.h5')
 
 
-model = pickle.load(open("rf_model.pkl", "rb"))
+model = pickle.load(open("unscaled_rf_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
@@ -48,9 +48,7 @@ def team():
 # Set route
 @app.route("/predict-dune")
 def predict_dune():
-    #float_features = [float(x) for x in request.form.values()]
     # float_features = [128,53,5.6,400000,6,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,1,0,0,0,0,0,0]
-    # features = [np.array(float_features)]
     
     prediction = model.predict(dune)
     return render_template("index.html", prediction_text = "This film has a boxoffice prediction of {}".format(prediction))
