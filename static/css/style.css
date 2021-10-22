@@ -17,11 +17,11 @@ body {
     background-color: whitesmoke;
 }
 
-
-
 /* from ELT Project */
 h1{
     color:#212529;
+    text-align:center;
+    margin-top:15px;
 }
 
 h2{
@@ -44,31 +44,15 @@ h5{
   color:#212529;
 }
 
-
-footer{
-  clear: both;
-    background:#757575;
-    color: White;
-    padding: 0;
-    vertical-align: middle;
-    margin: 0;
-    position: fixed;
-    bottom: 0px;
-
+.btn{
+  border-color: #212529 !important;
+  background-color: #212529 !important;
 }
 
 .main-button{
   padding: 15px;
   font-size: x-large;
   font-weight: bold;
-}
-
-.dropdown-menu {
-  right: 0
-}
-.name {
-  font-size: larger;
-  margin-bottom: -2px;
 }
 
 .contact {
@@ -78,20 +62,22 @@ footer{
   padding-right: 75px;
   font-weight: 500;
 }
-.bar { 
-  margin-top: -8px;
-  padding-top: 5px;
-  padding-bottom: -8px;
+
+.card{
+  margin-bottom: 20px;
 }
-.foot {
-  padding: 0px;
-  margin-bottom: -5px;
-}
+
 .card-text{
   padding-bottom: 10px;
 }
+
 #frame{
   margin-bottom: 175px;
+  margin-top:20px;
+}
+
+#results{
+  border-color: transparent;
   margin-top:20px;
 }
 @media(max-width: 991px) {
@@ -99,131 +85,4 @@ footer{
     margin: 0px;
   }
 
-  .sm-format-cent{
-    text-align: center;
-  }
-
-  .sm-format-right{
-    text-align: right;
-  }
-  .sidenav {
-    padding-top: 50px;
-    margin-top: 200px;
-  }
-
 }
-
-/* for map */
-#map {
-  height: 500px;
-  margin-left: 23px;
-  width: 97%;
-}
-
-#example-image {
-  height:200px;
-}
-
-/* sidenav */
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #212529;
-  margin-top: 50px;
-  padding-left: 20px;
-}
-
-.radio-label {
-  color: white;
-  text-align: left;
-}
-
-/* input[type='radio']:after {
-  width: 15px;
-  height: 15px;
-  border-radius: 15px;
-  top: -2px;
-  left: -1px;
-  position: relative;
-  background-color: whitesmoke;
-  content: '';
-  display: inline-block;
-  visibility: visible;
-  border: 2px solid white;
-}
-
-input[type='radio']:checked:after {
-  width: 15px;
-  height: 15px;
-  border-radius: 15px;
-  top: -2px;
-  left: -1px;
-  position: relative;
-  background-color: rgb(108, 138, 196);
-  color: rgb(108, 138, 196);
-  content: '';
-  display: inline-block;
-  visibility: visible;
-  border: 2px solid white;
-} */
-
-
-.checkbox-label {
-  color: white;
-}
-
-a.sidenav-header {
-  color:whitesmoke;
-  text-decoration: none;
-}
-
-.filter-button {
-  background-color: Transparent;
-  border: none;
-  color: whitesmoke;
-  text-align: left;
-}
-
-.weather-selectors {
-  background-color: Transparent;
-  border: none;
-  color: rgb(108, 150, 212);
-  text-align: left;
-}
-
-.inf-selectors {
-  background-color: Transparent;
-  border: none;
-  color: rgb(108, 150, 212);
-  text-align: left;
-}
-
-/* main section */
-
-main {
-  margin-left: 200px;
-}
-
-.quick-stats {
-  padding: 10px;
-}
-
-.quick-stats .card {
-  height: 50px;
-  text-align: center;
-  border-width: medium;
-  border-color: #757575;
-  padding-top: 10px;
-}
-
-#chart1,
-#chart2 {
-
-  height: 375px;
-  width: 100%;
-}
-
