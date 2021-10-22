@@ -47,6 +47,10 @@ h2{
   font-weight: 500;
 }
 
+a.contact:hover{
+  color:#212529;
+}
+
 .card{
   margin-bottom: 20px;
 }
