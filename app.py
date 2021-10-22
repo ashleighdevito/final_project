@@ -13,7 +13,7 @@ from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans
 import numpy as np
 
 
-model = pickle.load(open("unscaled_rf_model.pkl", "rb"))
+model = pickle.load(open("best_rf_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
