@@ -9,19 +9,11 @@ import decimal
 from sqlalchemy import create_engine, inspect, func
 from importlib import reload
 import pickle 
-#from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song
+from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song
 import numpy as np
 
-dune = [[155,75.0,8.4,21000000,4,1,0,0.0,0,1,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,0.0,0.0,0,1,0,0.0,0.0,0.0,0.0]]
-ron = [[106,68.0,6.3,21000000,4,1,1,0.0,1,0,0.0,0.0,0.0,0,0,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,0.0,0.0,1,0,0,0.0,0.0,0.0,0.0]]
-souvenir = [[106,98.0,8.0,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
-spencer = [[111,85.0,6.4,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,1,1,0.0,0.0,0.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
-mothering_sunday = [[110,69.0,6.2,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
-humans = [[108,78.0,7.3,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
-rocket =[[128,78.0,7.0,21000000,4,0,1,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,12,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
-song = [[105,66.0,7.0,21000000,4,0,0,0.0,0,0,0.0,0.0,0.0,0,1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,8,0.0,0.0,0.0,0,0,1,0.0,0.0,0.0,0.0]]
 
-model = pickle.load(open("rf_model.pkl", "rb"))
+model = pickle.load(open("unscaled_rf_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
@@ -32,12 +24,12 @@ def home():
     # Return template and data
     return render_template("index.html", prediction_text = "Run the model to see a box office prediction.")
 
-
 @app.route("/index")
 def index():
 
     # Return template and data
     return render_template("index.html", prediction_text = "Run the model to see a box office prediction.")
+  
 # Set route
 @app.route("/team")
 def team():
@@ -54,9 +46,6 @@ def model_page():
 # Set route
 @app.route("/predict-dune")
 def predict_dune():
-    # float_features = [float(x) for x in request.form.values()]
-    # float_features = [128,53,5.6,400000,6,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0,0,1,0,0,0,0,0,0]
-    # features = [np.array(float_features)]
     
     diction = str(model.predict(dune))
     chunks = diction.split("'")
