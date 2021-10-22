@@ -7,13 +7,13 @@ import pickle
 import numpy as np
 
 
-upcoming_movie_data = pd.read_csv('models/upcoming_movie_data.csv')
-
-dune = upcoming_movie_data[(upcoming_movie_data['metascore'] == 75.0)].values.tolist()
-ron = upcoming_movie_data[(upcoming_movie_data['metascore'] == 68.0)].values.tolist()
-souvenir = upcoming_movie_data[(upcoming_movie_data['metascore'] == 98.0)].values.tolist()
-spencer = upcoming_movie_data[(upcoming_movie_data['metascore'] == 85.0)].values.tolist()
-mothering_sunday = upcoming_movie_data[(upcoming_movie_data['metascore'] == 69.0)].values.tolist()
-humans = upcoming_movie_data[(upcoming_movie_data['imdb_rating'] == 7.3)].values.tolist()
-rocket	 = upcoming_movie_data[(upcoming_movie_data['metascore'] == 78.0) & (upcoming_movie_data['imdb_rating'] == 7.0)].values.tolist()
-song = upcoming_movie_data[(upcoming_movie_data['metascore'] == 66.0)].values.tolist()
+upcoming_movie_data = pd.read_csv('scaled_upcoming_data.csv')
+    
+dune = upcoming_movie_data.iloc[0]
+ron = upcoming_movie_data.iloc[1]
+souvenir = upcoming_movie_data.iloc[2]
+spencer = upcoming_movie_data.iloc[3]
+mothering_sunday = upcoming_movie_data.iloc[4]
+humans = upcoming_movie_data.iloc[5]
+rocket	 = upcoming_movie_data.iloc[6]
+song = upcoming_movie_data.iloc[7]

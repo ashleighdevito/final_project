@@ -11,9 +11,18 @@ from importlib import reload
 import pickle 
 from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song
 import numpy as np
+import xgboost
+from sklearn.preprocessing import StandardScaler
+
+model = xgboost.Booster()
+model.load_model("best_xg_model.model")
+# model = pickle.load(open("best_xg_model.pkl", "rb"))
+
+movies = [dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song]
+# dune = dune.reshape(-1,1)
+print(model.predict(xgboost.DMatrix([dune])))
 
 
-model = pickle.load(open("best_rf_model.pkl", "rb"))
 
 # Create an instance of our Flask app.
 app = Flask(__name__)
@@ -47,72 +56,55 @@ def model_page():
 @app.route("/predict-dune")
 def predict_dune():
     
-    diction = str(model.predict(dune))
-    chunks = diction.split("'")
-    prediction = chunks[1]
-
+    prediction = model.predict(xgboost.DMatrix(dune))
+    
+    
     return render_template("index.html", prediction_text = "Dune has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-ron")
 def predict_ron():
     
-    diction = str(model.predict(ron))
-    chunks = diction.split("'")
-    prediction = chunks[1]
-
+    prediction = model.predict(xgboost.DMatrix(ron))
     return render_template("index.html", prediction_text = "Ron's Gone Wrong has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-souvenir")
 def predict_souvenir():
 
-    diction = str(model.predict(souvenir))
-    chunks = diction.split("'")
-    prediction = chunks[1]
-
+    prediction = model.predict(xgboost.DMatrix(souvenir))
     return render_template("index.html", prediction_text = "The Souvenir: Part II has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-spencer")
 def predict_spencer():
 
-    diction = str(model.predict(spencer))
-    chunks = diction.split("'")
-    prediction = chunks[1]
+    prediction = model.predict(xgboost.DMatrix(spencer))
 
     return render_template("index.html", prediction_text = "Spencer has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-mothering_sunday")
 def predict_mothering():
 
-    diction = str(model.predict(mothering_sunday))
-    chunks = diction.split("'")
-    prediction = chunks[1]
+    prediction = model.predict(xgboost.DMatrix(mothering_sunday))
 
     return render_template("index.html", prediction_text = "Mothering Sunday has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-humans")
 def predict_humans():
 
-    diction = str(model.predict(humans))
-    chunks = diction.split("'")
-    prediction = chunks[1]
+    prediction = model.predict(xgboost.DMatrix(humans))
 
     return render_template("index.html", prediction_text = "The Humans has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-rocket")
 def predict_rocket():
 
-    diction = str(model.predict(rocket))
-    chunks = diction.split("'")
-    prediction = chunks[1]
+    prediction = model.predict(xgboost.DMatrix(rocket))
 
     return render_template("index.html", prediction_text = "Red Rocket has a boxoffice prediction of {}.".format(prediction))
 
 @app.route("/predict-song")
 def predict_song():
 
-    diction = str(model.predict(song))
-    chunks = diction.split("'")
-    prediction = chunks[1]
+    prediction = model.predict(xgboost.DMatrix(song))
 
     return render_template("index.html", prediction_text = "Swan Song has a boxoffice prediction of {}.".format(prediction))
 
