@@ -119,7 +119,7 @@ The presentation describing our project process was then created.
 
 ### Deployment
 
-The entire repo is hosted on Heroku, and is able to be viewed publically.
+The webpage is deployed and hosted on Heroku, so it is able to be viewed publically.
 
 ## Appendix
 
