@@ -29,7 +29,8 @@ AWS was used to host the database.
 
 The primary logic challenge of this project lied within the predictive models. The team created a Jupyter Notebook file containing the script for building the machine learning model and having it predict box office success based on the historical movie data.
 
-The model weights are pictured here:![image](static/images/weights.PNG?raw=true "Weights")
+The model weights are pictured here:  
+![image](static/images/weights.PNG?raw=true "Weights")
 
 ### The Webpage
 
@@ -39,13 +40,13 @@ Heroku was used to host this application. It references this repository's root d
 
 ### [Project Proposal](proposal.txt)
 
-The goal of this project was to create a website that contained a model that could predict a films box office success based on the historical movie data the team gathered.
+The goal of this project was to create a website containing a model to predict a films box office success, based on the historical movie data the team gathered.
 
 We created sketches of what we wanted the final project to look like:
 
 ![image](static/images/napkin_drawing.jpg?raw=true "Napkin Drawing")
 
-In the process of bulding, we diverted from these initial drawings, as we discovered limitations and decided upon other functionality.
+In the process of bulding, we diverted from these initial drawings, as we discovered limitations and decided upon other functionality. We kept the cards, but limited the results to a much smaller dataset than originally conceived, eliminating the need for pagination.
 
 We also drafted ideas for the presentation we would be needing.
 
@@ -87,6 +88,8 @@ Features gathered from separate sources were all merged to a single dataframe on
 
 The creation of the model went through several interations. Our neural network model didn’t work with the pickling so we saved it as an h5 file. This proved tricky to work with and we decided to stick to using the random forest and xg boost models. Ultimately, we chose the XG boost model to use in our application.
 
+This process included importing any models, initializing the model, fitting it to a training and testing set, performing predictions, and then measuring our model accuracy.
+
 ```
 # xg boost
 from xgboost import XGBClassifier
@@ -108,15 +111,15 @@ print("Accuracy: %.2f%%" % (accuracy * 100.0))
 ```
 ### Logic
 
-The control document and the individual elements were created simultaneously by separate members of the team. They were then incorporated into one structure and deployed.
+The control document and the individual elements were created simultaneously by separate members of the team. They were then incorporated into one structure and deployed.  Github houses the files for any deployed webpages, Jupyter notebooks used to manipulate data, images pulled from the completed website, and other planning documentation.  Most communication was done utilizing Slack.
 
 ### Presentation
 
-The presentation was then created and repo organized.
+The presentation describing our project process was then created.
 
 ### Deployment
 
-The entire repo is hosted on Heroku, and is able to be viewed publically.
+The webpage is deployed and hosted on Heroku, so it is able to be viewed publically.
 
 ## Appendix
 
