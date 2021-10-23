@@ -4,9 +4,9 @@
 
 Thank you to Terrell Bradford, Michael Cipriani, Ashleigh DeVito, Laura Kemp, and Sam Pierce for creating this visualization.
 
-## [Product](insert website here)
+## [Product](https://cwru-bootcamp-movie-predictor.herokuapp.com/)
 
-This repo houses a [website](insert website here) that visualizes and predicts the revenue of upcoming films based on historical movie releases from the past 15 years (2006 - Present).
+This repo houses a [website](https://cwru-bootcamp-movie-predictor.herokuapp.com/) that visualizes and predicts the revenue of upcoming films based on historical movie releases from the past 15 years (2006 - Present).
 
 ### Navigation and How it Works
 
@@ -23,7 +23,7 @@ The main page contains a list of upcoming moives and a "predict" button below ea
 
 The team gathered data from IMDB, OMDB, Google, and The Numbers. The information obtained included movie budget data, upcoming movies, genres, buzz data, actors, etc.
 The collected data was then cleaned and saved to csv files and the database was created.
-AWS was used to host the database
+AWS was used to host the database.
 
 ### The Model
 
@@ -77,24 +77,38 @@ for x in range(360):
 ### Data Cleaning
 
 Data was cleaned using jupyter notebook script.
+All of the data gathered from OMDb was stored as objects, so all datatypes were converted appropriately to load into the database.
+Movie titles for the upcoming released films scraped from IMDb included year of release in the string. This attribute was removed via string split.
+Omitted data included: studio, language, plot, tagline, directors, writers, actors.
+Release date information was converted to Month.
+Features gathered from separate sources were all merged to a single dataframe on the movie title.
 
 ### Creating the Model
 
-Using a Jupiter notebook, queries were run to create a materialized view within our database.
+The creation of the model went through several interations. Our neural network model didn’t work with the pickling so we saved it as an h5 file. This proved tricky to work with and we decided to stick to using the random forest and xg boost models. Ultimately, we chose the XG boost model to use in our application.
 
 ```
+# xg boost
+from xgboost import XGBClassifier
 
+# fit model no training data
+xg_model = XGBClassifier()
+xg_model.fit(X_train_scaled, y_train)
 ```
-
-Next Flask was used to create routes to this view, hosted on Heroku. Below is one of three routes we created.
-
 ```
+# xg boost
+# make predictions for test data
+y_pred = xg_model.predict(X_test_scaled)
+predictions = [value for value in y_pred]
 
-    
+from sklearn.metrics import accuracy_score
+# evaluate predictions
+accuracy = accuracy_score(y_test, predictions)
+print("Accuracy: %.2f%%" % (accuracy * 100.0))
 ```
 ### Logic
 
-The control document and the individual elements were created simultaneously by separate members of the team.  They were then incorporated into one structure and deployed.
+The control document and the individual elements were created simultaneously by separate members of the team. They were then incorporated into one structure and deployed.
 
 ### Presentation
 
