@@ -67,6 +67,9 @@ a.contact:hover{
   text-align: center;  
 }
 
+.results{
+  text-indent: 150px;
+}
 #frame{
   margin-bottom: 30px;
   margin-top: 20px;
