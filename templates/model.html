@@ -20,7 +20,7 @@
   <!-- navbar -->
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid bar">
-      <a class="navbar-brand main-button" href="/index">Predicting Movie Revenue</a>
+      <a class="navbar-brand main-button" href="/index">Predicting Movie Box Office</a>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item ms-auto">
           <a href="/model" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">The Project</a>
@@ -45,28 +45,34 @@
           <div class="row">
             <h2>Goal</h2><br>
             <p>
-            Our goal for this project is to predict the domestic box office gross of upcoming movies based on the last 15 years of movie data.
+            Big-budget movies carry a large financial risk.  In order to help make decisions on release strategy, we created an application to predict the box office success of a film.<br>
+            We gathered data on historical movie releases from the past 15 years to create an algorithm and predict a range of box office earnings for future debuts.<br>
             </p>
             <br><h2>Approach</h2><br>
             <p>
-            We followed a traditional extract, transform, and load process to create a database hosted on Amazon Web services.  The data we collected includes budget, runtime, genres, directors, actors, critical ratings, and more. The full list of included features can be seen in the data dictionary. 
+            We followed a traditional extract, transform, and load process to create a database hosted on Amazon Web Services (AWS).  The data we collected includes budget, runtime, genres, directors, actors, critical ratings, and more. The full list of included features can be seen in the data dictionary. 
             </p>
             <p>
-            The target movie set was determined for predicting the revenue
+            We gathered data regarding releases over the past 15 years (2006-present) as we considered that to be the modern timeframe with consistent marketing strategies. The target movie set was determined to be films releasing over the next several months.  
             </p>
             <br><h2>Process</h2><br>
             <br><h3>Extraction:</h3><br>
             <p>
-            The majority of historical data was gathered from OMDB.<br>
-            Budget data was gathered from thenumbers.com<br>
-            The data on movies that were to be released was gathered from Imdb.<br>
-            Buzz, our metric for marketing, was gathered through Google Trends analysis of the movie titles.              
+            Movie titles and budget data was gathered from thenumbers.com<br>
+            The majority of historical data was called from the OMDb API.<br>
+            The data on movies that were to be released was gathered from IMDb.<br>
+            Buzz, our metric for marketing, was gathered through Google Trends analysis of the movie titles.<br>
+            Web scrapers were used to gather non-API data.              
             </p>
             <br><h3>Transformation:</h3><br>
             <p>
             Data was cleaned using Jupyter notebook scripts.<br>
-            Omitted data included: studio, language, plot, tagline, directors, writers, actors. Release date information was converted to Month.<br>
-            Dummy columns were created for genre and movie rating.              
+            All of the data gathered from OMDb was stored as objects, so all datatypes were converted appropriately to load into the database.<br>
+            Movie titles for the upcoming released films scraped from IMDb included year of release in the string. This attribute was removed via string split.<br>
+            Omitted data included: studio, language, plot, tagline, directors, writers, actors.<br>
+            Release date information was converted to Month.<br>
+            Features gathered from separate sources were all merged to a single dataframe on the movie title.<br>
+            
             </p>
             <br><h3>Loading:</h3><br>
             <p>
@@ -75,18 +81,19 @@
             </p>
             <br><h3>Modeling:</h3><br>
             <p>
-            Data was called from our database and used to create  an XG boost model.<br>
+            Data was called from our database and used to create an XG boost model.<br>
+            Dummy columns were created for genre and movie rating.<br>
             The historical dataset was split into testing and training sets.<br>
-            Once optimized, the model was converted into binary information for export through the Pickle module, allowing it to be accessible to our application.            
+            Once optimized, the model was exported, allowing it to be accessible to our application.            
             </p>
             <br><h3>Presenting:</h3><br>
             <p>
-            Our model was deployed using a Flask application, built with Python, which applies our model to data gathered from upcoming movies.<br>
-            A website, hosted through Heroku, creates an interface in which a user is able to select a film to view our prediction for that film’s revenue.
+            Our model was deployed using a Flask application, built with Python, which applies our model to data describing upcoming movies.<br>
+            A website, hosted through Heroku, creates an interface in which a user is able to select a film to view our prediction for that film’s Box Office sales.
             </p>
             <br><h2>Product</h2><br>
             <p>
-            Our application contains pages for prediction, a project analysis, and a team profile, as well as a link to previous projects.
+            Our application contains pages for prediction, a project analysis, a team profile, as well as a link to a previous project.
             </p>
             <br><h2>Challenges</h2><br>
             <br><h3>In data collection:</h3><br>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Predicting Movie Revenue</title>
+  <title>Predicting Movie Box Office</title>
 
   <!-- D3 -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -20,7 +20,7 @@
       <!-- navbar -->
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid bar">
-          <a class="navbar-brand main-button" href="/index">Predicting Movie Revenue</a>
+          <a class="navbar-brand main-button" href="/index">Predicting Movie Box Office</a>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item ms-auto">
               <a href="/model" class="nav-link" style="color: rgba(205, 214, 219, 0.925)">The Project</a>
@@ -41,13 +41,13 @@
         <div class="col-10 offset-1" id="frame">
           <div class='row'>
             <div class="col-lg-12">
-              <h1>Click on a movie button to see our predicted revenue:</h1>
+              <h1>Click on a movie button to see our predicted Box Office sales:</h1>
             </div>
           </div>
           <div class='row'>
             <div class="col-lg-12">
               <div class='card' id="results">
-                <!-- Predicted Revenue: $$$$ -->
+                <!-- Predicted Sales: $$$$ -->
                 <h2>{{ prediction_text }}</h2><br>
               </div>
             </div>
