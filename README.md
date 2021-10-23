@@ -8,15 +8,16 @@ Thank you to Terrell Bradford, Michael Cipriani, Ashleigh DeVito, Laura Kemp, an
 
 This repo houses a [website](insert website here) that visualizes and predicts the revenue of upcoming films based on historical movie releases from the past 15 years (2006 - Present).
 
-### Navigation
- 
-  Top Navigation..
-  Side Bar..
-  Upcoming Movies..
-  Analysis..
-  Team Page..
+### Navigation and How it Works
 
-## How It Works
+The top right corner of the websie includes three tabs (The Project, Our Team, and ETL Project).
+The Project tab includes a detailed description of this project.
+Our Team tab shows the a picture and description of each team member.
+ETL Project tab is a link to our previous data bootcamp project.
+
+The main page contains a list of upcoming moives and a "predict" button below each film. Clickling the button will generate the model and output the probability the mvoie has of grossing under $20 million, between $20 million and $100 million, between $100 million and $200 million, and above $200 million. Below is an example of the models output.
+
+![image](static/images/example.PNG?raw=true "Dune Example")
 
 ### The Data
 
@@ -50,8 +51,32 @@ We also drafted ideas for the presentation we would be needing.
 
 ![image](static/images/presentation_sketch.jpg?raw=true "Presentation Sketch")
 
+### Website Scraping
+Example of code used to scrape from one of the data sources is shown below.
+```
+url = 'https://www.imdb.com/calendar/?ref_=nv_mv_cal'
+response = requests.get(url)
+soup = bs(response.text, 'html.parser')
+
+lis = soup.body.find_all('li')
+movies =[]
+for li in lis:
+                # If td element has an anchor...
+    if (li.a):
+                    # And the anchor has non-blank text...
+        if (li.a.text):
+                        # Append the td to the list
+            movies.append(li)
+
+titles =[]
+for x in range(360):
+    print(movies[x].text)
+    titles.append(movies[x].text)
+```
+
 ### Data Cleaning
 
+Data was cleaned using jupyter notebook script.
 
 ### Creating the Model
 
@@ -71,17 +96,6 @@ Next Flask was used to create routes to this view, hosted on Heroku. Below is on
 
 The control document and the individual elements were created simultaneously by separate members of the team.  They were then incorporated into one structure and deployed.
 
-### Testing
-
-We then examined the data and debugged any issues.  Several that we ran into:
-
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-
 ### Presentation
 
 The presentation was then created and repo organized.
@@ -92,5 +106,4 @@ The entire repo is hosted on Heroku, and is able to be viewed publically.
 
 ## Appendix
 
-[Awesome Markers leaflet library](https://github.com/lennardv2/Leaflet.awesome-markers)  
 [Heroku](https://www.heroku.com/home)
