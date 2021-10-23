@@ -3,12 +3,8 @@
 
 #Dependencies
 import pandas as pd
-import sqlalchemy
 from flask import Flask, json, request, jsonify, render_template, redirect
-import decimal
-from sqlalchemy import create_engine, inspect, func
 from importlib import reload
-import pickle 
 from upcoming_data import dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song
 import numpy as np
 import xgboost
