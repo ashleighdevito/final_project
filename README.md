@@ -24,13 +24,11 @@ The team gathered data from IMDB, OMDB, Google, and The Numbers. The information
 The collected data was then cleaned and saved to csv files and the database was created.
 AWS was used to host the database
 
-### The Model(s)
+### The Model
 
-The primary logic challenge of this project lied within the predictive models. The team created a Jupyter Notebook file containing the script for building the machine learning model and having it predict box office success based on the historical movie data. The data works as follows:
+The primary logic challenge of this project lied within the predictive models. The team created a Jupyter Notebook file containing the script for building the machine learning model and having it predict box office success based on the historical movie data.
 
-1....
-2....
-3....
+The model weights are pictured here:![image](static/images/weights.PNG?raw=true "Weights")
 
 ### The Webpage
 
@@ -50,7 +48,7 @@ In the process of bulding, we diverted from these initial drawings, as we discov
 
 We also drafted ideas for the presentation we would be needing.
 
-![image](insert presentation image here)
+![image](static/images/presentation_sketch.jpg?raw=true "Presentation Sketch")
 
 ### Data Cleaning
 
