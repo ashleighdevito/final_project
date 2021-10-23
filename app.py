@@ -23,7 +23,6 @@ movies = [dune, ron, souvenir, spencer, mothering_sunday, humans, rocket, song]
 print(model.predict(xgboost.DMatrix([dune])))
 
 
-
 # Create an instance of our Flask app.
 app = Flask(__name__)
 
@@ -56,57 +55,83 @@ def model_page():
 @app.route("/predict-dune")
 def predict_dune():
     
-    prediction = model.predict(xgboost.DMatrix(dune))
+    results = model.predict(xgboost.DMatrix([dune]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
     
-    
-    return render_template("index.html", prediction_text = "Dune has a boxoffice prediction of {}.".format(prediction))
+    return render_template("index.html", prediction_text = "The probability that Dune will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-ron")
 def predict_ron():
     
-    prediction = model.predict(xgboost.DMatrix(ron))
-    return render_template("index.html", prediction_text = "Ron's Gone Wrong has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([ron]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that Ron's Gone Wrong will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-souvenir")
 def predict_souvenir():
 
-    prediction = model.predict(xgboost.DMatrix(souvenir))
-    return render_template("index.html", prediction_text = "The Souvenir: Part II has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([souvenir]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that The Souvenir: Part II will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-spencer")
 def predict_spencer():
 
-    prediction = model.predict(xgboost.DMatrix(spencer))
-
-    return render_template("index.html", prediction_text = "Spencer has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([spencer]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that Spencer will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-mothering_sunday")
 def predict_mothering():
 
-    prediction = model.predict(xgboost.DMatrix(mothering_sunday))
-
-    return render_template("index.html", prediction_text = "Mothering Sunday has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([mothering_sunday]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that Mothering Sunday will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-humans")
 def predict_humans():
 
-    prediction = model.predict(xgboost.DMatrix(humans))
-
-    return render_template("index.html", prediction_text = "The Humans has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([humans]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that The Humans will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-rocket")
 def predict_rocket():
 
-    prediction = model.predict(xgboost.DMatrix(rocket))
-
-    return render_template("index.html", prediction_text = "Red Rocket has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([rocket]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that Red Rocket will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 @app.route("/predict-song")
 def predict_song():
 
-    prediction = model.predict(xgboost.DMatrix(song))
-
-    return render_template("index.html", prediction_text = "Swan Song has a boxoffice prediction of {}.".format(prediction))
+    results = model.predict(xgboost.DMatrix([song]))
+    under = results[0][1]
+    bin1 = results[0][3]
+    bin2 = results[0][0]
+    over = results[0][2]
+    return render_template("index.html", prediction_text = "The probability that Swan Song will have Box Office sales of \t under $20 million is: {:.2%} \n between $20 and $100 million is: {:.2%} \n between $100 million and $200 million is: {:.2%}\n above $200 million is {:.2%}.".format(under, bin1, bin2, over))
 
 if __name__ == '__main__':
     app.jinja_env.cache = {}
